@@ -4,19 +4,10 @@ class Numerology:
     def __init__(self, name, dob):
         self.__name = name
         self.__dob = dob
+        self.__conversion_vowels = {"A": 1, "U": 3, "E": 5, "O": 6, "I": 9, " ": 0}
+        self.__conversion_consonants = {"S": 1, "J": 1, "B": 2, "K": 2, "T": 2, "C": 3, "D": 4, "M": 4, "V": 4, "W": 5,
+                                 "N": 5, "X": 6, "F": 6, "G": 7, "P": 7, "Y": 7, "H": 8, "Q": 8, "Z": 8, "R": 9, " ": 0}
 
-        # Do the reading code here...
-        # 11/24/202
-        # iDay = int(self.__dob[0:2])
-        # iMonth = int(self.__dob[3:5])
-        # iYear = int(self.__dob[6:])
-        #
-        # sDateParts = self.__dob.split('/')
-        # iDay = int(sDateParts[0])
-        # iMonth = int(sDateParts[0])
-        # iYear = int(sDateParts[0])
-
-        # do more here...
 
     # coding the "getters"
     def get_name(self):
@@ -67,7 +58,13 @@ class Numerology:
         """Returns the computed power name number"""
         return self.__power_name
 
-    def get_soul(self):
+    def get_soul(self, name):
         """ returns the computed soul number"""
-        return self.__soul
+        res = 0
+        for letter in name:
+            if letter in self.__conversion_vowels:
+                res += self.__conversion_vowels[letter]
+            if letter in self.__conversion_consonants:
+                res += self.__conversion_vowels[letter]
+        return res
 

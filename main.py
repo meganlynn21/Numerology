@@ -8,10 +8,10 @@ def main():
     is_valid = True
     while is_valid:
         try:
-            name = input("whats your full name? ")
-            break
+            name = input("whats your full name? ").upper()
             if not name:
                 raise ValueError('empty string')
+            break
         except ValueError:
             main()
     while is_valid:
@@ -29,6 +29,7 @@ def main():
     print(f"Life Path Number: {life_path}")
     print(f"Birth Day Number: {your_numerology.get_birthday(dob)}")
     print(f"Attitude Number: {your_numerology.get_attitude(dob)}")
+    print(f"Soul Number: {your_numerology.get_soul(name)}")
 
 main()
 
