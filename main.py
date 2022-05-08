@@ -30,6 +30,7 @@ def main():
     print(f"Birth Day Number: {your_numerology.get_birthday(dob)}")
     print(f"Attitude Number: {your_numerology.get_attitude(dob)}")
     print(f"Soul Number: {your_numerology.get_soul(name)}")
+    print(f"Personality Number: {your_numerology.get_personality(name)}")
 
 main()
 

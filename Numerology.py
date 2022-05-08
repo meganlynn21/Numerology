@@ -50,9 +50,22 @@ class Numerology:
         result2 = list(map(int, str(sum_of_list)))
         return sum(result2)
 
-    def get_personality(self):
+    def get_personality(self, name):
         """ Returns the computed personality number"""
-        return self.__personality
+        res = 0
+        for letter in name:
+            if letter in self.__conversion_consonants:
+                res += self.__conversion_consonants[letter]
+        str_res = str(res)
+        split_name = list(str_res)
+        new_list = []
+        for x in split_name:
+            new_list.append(x)
+        join_list = ''.join(new_list)
+        nums = int(join_list)
+        result = list(map(int, str(nums)))
+        sum_of_list = sum(result)
+        return sum_of_list
 
     def get_power_name(self):
         """Returns the computed power name number"""
@@ -64,7 +77,14 @@ class Numerology:
         for letter in name:
             if letter in self.__conversion_vowels:
                 res += self.__conversion_vowels[letter]
-            if letter in self.__conversion_consonants:
-                res += self.__conversion_vowels[letter]
-        return res
+        str_res = str(res)
+        split_name = list(str_res)
+        new_list = []
+        for x in split_name:
+            new_list.append(x)
+        join_list = ''.join(new_list)
+        nums = int(join_list)
+        result = list(map(int, str(nums)))
+        sum_of_list = sum(result)
+        return sum_of_list
 
