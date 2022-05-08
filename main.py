@@ -1,33 +1,34 @@
-"""_init__(sName, sDOB)
-getName() – returns the subjects name
-getBirthdate() – returns the subjects Date of Birth
-getAttitude() – returns the computed attitude number
-getBirthDay() – returns the computed birthday number
-getLifePath() – returns the computed life path number
-getPersonality() – returns the computed personality number
-getPowerName () – returns the computed power name number
-getSoul() – returns the computed soul number
-"""
 
-"""Use Numerology.py that will prompt for the user name and birthday 
-and then use the Numerology class to get the computed numbers:
-•	The two things that are needed to perform a reading is a person’s birth date 
-in mm-dd-yyyy format and birth name. 
- The inputted date should be tested to verify that it is entered 
- as a full 8 digit date with dashes or slashes (- or /) as separators.   
-•	The inputted name should be populated and not empty.  
-•	Call the Numerology class’ __init__ and each function to get the calculated results
-•	Output each of the findings to the screen. 
-"""
 
+import datetime
 import Numerology
 
-def main():
-    name = input("Please input your name: ")
-    birthday = input("Please input your birthday in mm-dd-yyyy format: ")
 
-    myNumerology = Numerology.Numerology(name, birthday)
-    try:
-        birthday.datetime.strptime(dob, '%Y-%m-%d')
-    except ValueError:
-        raise ValueError("Incorrect data format, should be YYYY-MM-DD")
+def main():
+    is_valid = True
+    while is_valid:
+        try:
+            name = input("whats your full name? ")
+            break
+            if not name:
+                raise ValueError('empty string')
+        except ValueError:
+            main()
+    while is_valid:
+        dob = input("whats your date of birth, MM-DD-YYYY format ")
+        try:
+            datetime.datetime.strptime(dob, "%m-%d-%Y")
+            break
+        except ValueError:
+            print("please input correct date format")
+
+    your_numerology = Numerology.Numerology(name, dob)
+    life_path = your_numerology.get_life_path(dob)
+    print(f"Test Name: {your_numerology.get_name()}")
+    print(f"Test DOB: {your_numerology.get_dob()}")
+    print(f"Life Path Number: {life_path}")
+    print(f"Birth Day Number: {your_numerology.get_birthday(dob)}")
+    print(f"Attitude Number: {your_numerology.get_attitude(dob)}")
+
+main()
+
